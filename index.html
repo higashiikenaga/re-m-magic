@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>魔力認証中</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: "Segoe UI", "Meiryo", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .magic-circle {
+      width: 150px;
+      height: 150px;
+      border: 3px dashed #8cf;
+      border-radius: 50%;
+      animation: spin 3s linear infinite;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .magic-circle::before {
+      content: "🔮";
+      font-size: 2.5rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .text {
+      font-size: 1.5rem;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="magic-circle"></div>
+  <div class="text" id="status-text">魔力認証中...</div>
+
+  <script>
+    // 認証メッセージの変更と遷移
+    setTimeout(() => {
+      document.getElementById('status-text').textContent = 'Re+M+認証完了！';
+    }, 3000); // 3秒後に表示変更
+
+    setTimeout(() => {
+      window.location.href = "fanpage.html"; // 認証後ページへ遷移
+    }, 5000); // 5秒後に遷移
+  </script>
+</body>
+</html>
